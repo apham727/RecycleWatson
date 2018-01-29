@@ -1,0 +1,24 @@
+
+
+https://cdn3.volusion.com/nhepf.lvwfa/v/vspfiles/photos/1011-2T.jpg
+
+
+for num in range(4):
+    print(data['images'][0]['classifiers'][0]['classes'][num]['class'])
+
+
+ object_list = []
+    for num in range(len('classes')):
+        object_list.append(data['images'][0]['classifiers'][0]['classes'][num]['class'])
+    return object_list
+
+def classify_local_image(image_path):
+    visual_recognition = VisualRecognitionV3('2016-05-20', api_key='a62b8c9c316c64b54cfd6e0da6ea7617fdf4d2b5')
+
+    with open(join(dirname(__file__), image_path), 'rb') as image_file:
+        data = visual_recognition.classify(images_file=image_file)
+
+    object_list = []
+    for num in range(len('classes')):
+        object_list.append(data['images'][0]['classifiers'][0]['classes'][num]['class'])
+    return object_list
